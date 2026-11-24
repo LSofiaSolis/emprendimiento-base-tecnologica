@@ -32,3 +32,13 @@ create policy "Solicitar pista" on public.solicitudes for insert to authenticate
 create policy "Administrar solicitudes" on public.solicitudes for update to authenticated using(exists(select 1 from public.establecimientos e where e.id=establecimiento and e.propietario=auth.uid())) with check(exists(select 1 from public.establecimientos e where e.id=establecimiento and e.propietario=auth.uid()));
 create policy "Lectura de votos" on public.votos for select using(true);
 create policy "Voto individual" on public.votos for insert to authenticated with check(visitante=auth.uid() and exists(select 1 from public.solicitudes s where s.id=solicitud and s.estado in ('pendiente','aprobada')));
+
+create index establecimientos_propietario_idx on public.establecimientos(propietario);
+create index votos_visitante_idx on public.votos(visitante);
+revoke all on public.establecimientos,public.solicitudes,public.votos from anon,authenticated;
+grant select on public.establecimientos,public.solicitudes,public.votos to authenticated;
+grant insert(nombre) on public.establecimientos to authenticated;
+grant insert(establecimiento,pista) on public.solicitudes to authenticated;
+grant update(estado) on public.solicitudes to authenticated;
+grant insert(solicitud) on public.votos to authenticated;
+revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
