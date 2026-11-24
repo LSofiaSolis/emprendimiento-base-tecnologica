@@ -1,1 +1,2 @@
-module.exports = function(req,res){res.setHeader('Cache-Control','no-store');res.status(200).json({url:process.env.NEXT_PUBLIC_SUPABASE_URL||'',key:process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY||''})}
+// Clave publicable del proyecto académico; no es una clave privada.
+module.exports = function(req,res){res.setHeader('Cache-Control','no-store');res.status(200).json({url:'https://yqcutalwxehvdliwznqa.supabase.co',key:'sb_publishable_9aNnR6QH2DlWy0aY7GSqoQ_PT0xZ381'})}
