@@ -22,3 +22,18 @@ Seis pistas sintéticas originales de 90 segundos generadas en el navegador. Los
 6. Desactivar un establecimiento y comprobar que el acceso queda bloqueado.
 
 Las credenciales no se incluyen en el repositorio. Las pruebas con usuarios reales deben documentarse por separado; no se atribuyen resultados de validación que no se hayan obtenido.
+
+## Mejoras de Sonora V3
+- Guía rápida disponible en la página de inicio y en `/?modo=guia`.
+- Visitantes con nombre o alias; el propietario puede consultar actividad y bloquear o desbloquear su navegador. El bloqueo impide nuevas acciones y retira solicitudes activas, pero no identifica de forma infalible a una persona que cambie de dispositivo o borre sus datos.
+- Aprobación configurable: manual, inmediata o tras 60 segundos sin moderación (modo predeterminado, procesado al consultar la sesión).
+- Actualización periódica del estado cada 3 segundos. Las acciones de moderación y reproducción requieren una sesión del propietario; solicitar y votar requiere una sesión de visitante.
+- Cierre de sesión explícito y separación visual de roles.
+- Vinilo animado en la página inicial, con respeto a las preferencias de movimiento reducido.
+
+### Prueba de moderación
+1. Abre el QR desde otro navegador e introduce un alias.
+2. Solicita una canción. Confirma que no se muestra un botón para aprobar en la vista de visitante.
+3. Desde el panel del dueño, comprueba que el alias aparece en Visitantes y en la solicitud.
+4. Prueba el modo de espera: después de 60 segundos, comprueba que se aprueba automáticamente sin intervención.
+5. Bloquea al visitante; comprueba que pierde acceso y sus solicitudes activas son retiradas. Desbloquéalo y recarga su página para restaurar la participación.
